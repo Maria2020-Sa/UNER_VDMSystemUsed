@@ -1,0 +1,26 @@
+[
+    {
+        "id": 0,
+        "marca": "f",
+        "modelo": "ffffff",
+        "anio": 5555,
+        "precio": 6565.0,
+        "delete": 0
+    },
+    {
+        "id": 1,
+        "marca": "fsssssssss",
+        "modelo": "sss",
+        "anio": 222,
+        "precio": 111111.0,
+        "delete": 0
+    },
+    {
+        "id": 2,
+        "marca": "ssssssssssssss",
+        "modelo": "ssssssssssddddddddd",
+        "anio": 1,
+        "precio": 2.0,
+        "delete": 0
+    }
+]
