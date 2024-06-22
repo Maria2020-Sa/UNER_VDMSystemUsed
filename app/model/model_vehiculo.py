@@ -1,5 +1,12 @@
 from service_vehiculo import *
 
+def solicitar_datos_vehiculos():
+    marca = input("Marca: ")
+    modelo = input("Modelo: ")
+    anio = int(input("Año: "))
+    precio = float(input("Precio: "))
+
+
 
 def gestionar_vehiculo():
     while True:
@@ -14,6 +21,7 @@ def gestionar_vehiculo():
 
         match opcion:
             case "1":
+<<<<<<< Updated upstream
                 dominio = input("Dominio: ")
                 marca = input("Marca: ")
                 modelo = input("Modelo: ")
@@ -24,6 +32,10 @@ def gestionar_vehiculo():
                 precio_venta = float(input("Precio de Venta: "))
                 estado = input("Estado actual: ")
                 agregar_vehiculo(dominio, marca, modelo, tipo, anio, kilometraje, precio_compra, precio_venta, estado)
+=======
+               
+                agregar_vehiculo(marca, modelo, anio, precio)
+>>>>>>> Stashed changes
                 print("Vehículo agregado correctamente.")
             case "2":
                 id_vehiculo = int(input("Ingrese el ID del vehículo que desea actualizar: "))

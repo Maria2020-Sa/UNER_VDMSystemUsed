@@ -1,0 +1,1 @@
+Para ejecutar paquetes como modulos independiente utilizamos python -m app.service.service_cliente
