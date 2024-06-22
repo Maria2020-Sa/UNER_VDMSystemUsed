@@ -27,33 +27,44 @@ def escribir_datos(dato):
     with open(archivo_vehiculos, 'w') as archivo:
         json.dump(dato, archivo, indent=4)
 
-def agregar_vehiculo(marca, modelo, anio, precio):
+def agregar_vehiculo(dominio, marca, modelo, tipo, anio, kilometraje, precio_compra, precio_venta, estado):
     vehiculos = leer_datos()
     nuevo_vehiculo = {
-        "id": (len(vehiculos)-1) + 1,
+        "id_vehiculo": len(vehiculos),
+        "dominio": dominio,
         "marca": marca,
         "modelo": modelo,
-        "año": anio,
-        "precio": precio,
+        "tipo": tipo,
+        "anio": anio,
+        "kilometraje": kilometraje,
+        "precio_compra": precio_compra,
+        "precio_venta": precio_venta,
+        "estado": estado,
         "delete": 0
     }
     vehiculos.append(nuevo_vehiculo)
     escribir_datos(vehiculos)
 
-
-
-
-
-
-
-
 #Editar:
-def editar_dato():
-    print("En producción")
+def editar_dato(id_vehiculo, dominio, marca, modelo, tipo, anio, kilometraje, precio_compra, precio_venta, estado):
+    vehiculos = leer_datos()
+    for value in vehiculos:
+        if value['id_vehiculo'] == id_vehiculo:
+            value['dominio'] = dominio
+            value['marca'] = marca
+            value['modelo'] = modelo
+            value['tipo'] = tipo
+            value['anio'] = anio
+            value['kilometraje'] = kilometraje
+            value['precio_compra'] = precio_compra
+            value['precio_venta'] = precio_venta
+            value['estado'] = estado
+    escribir_datos(vehiculos)
 
 #Eliminar:
 def borrado_logico(id):
-    for value in archivo_vehiculos:
+    vehiculos = leer_datos()
+    for value in vehiculos:
         if(value['id']==id):
             value['delete']=1
 
