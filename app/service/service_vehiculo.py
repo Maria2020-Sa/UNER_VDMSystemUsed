@@ -1,6 +1,6 @@
 import json
 import os
-from model_vehiculo import Vehiculo
+from model.model_vehiculo import Vehiculo
 
 
 archivo_vehiculos = "vehiculos.json"

@@ -1,5 +1,6 @@
-from app.service.service_vehiculo import *
-from model_vehiculo import Vehiculo
+from service.service_vehiculo import *
+from model.model_vehiculo import Vehiculo
+
 
 def solicitar_datos_vehiculos():
   dominio = input("Dominio: ")
