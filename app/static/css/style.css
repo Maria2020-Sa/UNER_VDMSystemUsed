@@ -1,0 +1,64 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;    
+}
+body {
+    background: linear-gradient(to bottom, #D9D9D9 0%, #737373 100%) no-repeat;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color:#1C5350;
+    background-attachment: fixed;
+
+}
+
+.container-full-height {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Se asegura de que cubra al menos toda la altura de la ventana */
+}
+
+.custom-container{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: transparent !important;
+    height: 100%;
+}
+.container {
+    background-color: transparent !important;
+}
+.form-container{
+    padding: 10px;
+    border: solid 1px gray;
+    border-radius: 10px;
+}
+
+.container-title{
+    text-align: center;
+}
+
+.card-body{
+    width: 100%;
+}
+
+.card{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #D9D9D9;
+    border-radius: 15px !important;
+}
+
+img{
+    margin: 10px 10px 10px 0px;
+}
+
+
+.navbar img.logo {
+    position: absolute;
+    left: 0px;
+    top: 7px;
+}
