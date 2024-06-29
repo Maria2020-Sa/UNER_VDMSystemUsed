@@ -1,19 +1,8 @@
 import json
-import os
 from model.model_vehiculo import Vehiculo
 
 
 archivo_vehiculos = "vehiculos.json"
-
-#Crear:
-# Verifica si el archivo existe; si no, créalo
-def crear_archivo():
-    if not os.path.exists(archivo_vehiculos):
-        with open(archivo_vehiculos, 'w') as archivo:
-            json.dump([], archivo)
-    else:
-        with open(archivo_vehiculos, "r") as archivo:
-            return (json.load(archivo))
 
 #Deserializa el obj JSON a Array Python
 def leer_datos():
@@ -33,6 +22,7 @@ def agregar_vehiculo(vehiculo: Vehiculo):
     vehiculo.setIdVehiculo(len(vehiculos)) 
     vehiculos.append(vehiculo.to_dict())
     escribir_datos(vehiculos)
+    return vehiculo.id_vehiculo
 
 #Editar:
 def editar_dato(id_vehiculo, vehiculo: Vehiculo):
@@ -60,8 +50,8 @@ def borrado_logico(id_vehiculo):
 
 #Listados de búsqueda por (patente, marca, modelo y precios de compra/venta).
 def mostrar_inventario():
-    vehiculos = leer_datos()
+    datos = leer_datos()
+    vehiculos = [Vehiculo(**dato) for dato in datos]
     for vehiculo in vehiculos:
-        if(vehiculo['delete']!=1):
+        if(vehiculo.delete != 1):
             print(vehiculo)
-        

@@ -13,9 +13,7 @@ def solicitar_datos_vehiculos():
   precio_venta = float(input("Precio de Venta: "))
   estado = input("Estado actual: ")
   delete = input("<0-Activo | 1-No Activo>: ")
-  return Vehiculo(dominio,marca,modelo,tipo,anio,kilometraje,precio_compra,precio_venta,estado,delete)
-
-
+  return Vehiculo('0',dominio,marca,modelo,tipo,anio,kilometraje,precio_compra,precio_venta,estado,delete)
 
 def gestionar_vehiculo():
     while True:
@@ -26,7 +24,7 @@ def gestionar_vehiculo():
     3. Eliminar vehículo
     4. Mostrar inventario disponible actualizado
     5. Salir""")
-        opcion = input("**Selecciona una opción: ")
+        opcion = input("    Selecciona una opción: ")
 
         match opcion:
             case "1":
@@ -37,10 +35,12 @@ def gestionar_vehiculo():
                 id_vehiculo = int(input("Ingrese el ID del vehículo que desea actualizar: "))
                 vehiculo = solicitar_datos_vehiculos()
                 editar_dato(id_vehiculo, vehiculo)
+                print("Vehículo actualizado correctamente.")
             case "3":
                 id_vehiculo = int(input("Numero de la lista a borrar: "))
                 borrado_logico(id_vehiculo)
             case "4":
+                print("\nINVENTARIO DE VEHÍCULOS ACTIVOS:")
                 mostrar_inventario()
             case "5":
                 break
