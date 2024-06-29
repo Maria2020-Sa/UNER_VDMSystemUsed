@@ -17,52 +17,52 @@
 {% endblock %}
 
 {% block form_compra%}
-<form class="mb-3">
+<form method="POST" action="/guardar" class="mb-3">
     <div class="mt-4">
         <div class="container">
             <div class="form-container">
                 <h2 class="container-title">Vehiculo</h2>
                 <div class="mb-3">
                     <div class="row">
-                        <div class="col">
-                            <label for="dominio" class="form-label">Dominio</label>
-                            <input type="text" class="form-control" id="dominio" aria-describedby="dominio">
+                        <div class="col form-group">
+                            {{ form.dominio.label(class="form-control-label") }}
+                            {{ form.dominio(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="marca" class="form-label">Marca</label>
-                            <input type="text" class="form-control" id="marca" aria-describedby="marca">
+                            {{ form.marca.label(class="form-control-label") }}
+                            {{ form.marca(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="modelo" class="form-label">Modelo</label>
-                            <input type="text" class="form-control" id="modelo" aria-describedby="modelo">
+                            {{ form.modelo.label(class="form-control-label") }}
+                            {{ form.modelo(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="tipo" class="form-label">Tipo</label>
-                            <input type="text" class="form-control" id="tipo" aria-describedby="tipo">
+                            {{ form.tipo.label(class="form-control-label") }}
+                            {{ form.tipo(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="anio" class="form-label">Años</label>
-                            <input type="text" class="form-control" id="anio" aria-describedby="anio">
+                            {{ form.año.label(class="form-control-label") }}
+                            {{ form.año(class="form-control") }}
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="row">
                         <div class="col">
-                            <label for="kilometraje" class="form-label">Kilometraje</label>
-                            <input type="number" class="form-control" id="kilometraje" aria-describedby="kilometraje">
+                            {{ form.kilometraje.label(class="form-control-label") }}
+                            {{ form.kilometraje(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="precioCompra" class="form-label">Precio de Compra</label>
-                            <input type="number" class="form-control" id="precioCompra" aria-describedby="precioCompra">
+                            {{ form.precioDeCompra.label(class="form-control-label") }}
+                            {{ form.precioDeCompra(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="precioVenta" class="form-label">Precio de Venta</label>
-                            <input type="number" class="form-control" id="precioVenta" aria-describedby="precioVenta">
+                            {{ form.precioDeVenta.label(class="form-control-label") }}
+                            {{ form.precioDeVenta(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="estado" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="estado" aria-describedby="estado">
+                            {{ form.estado.label(class="form-control-label") }}
+                            {{ form.estado(class="form-control") }}
                         </div>
                         <div class="col">
                             <label class="form-label"></label>
@@ -89,37 +89,38 @@
                 <div class="mb-3">
                     <div class="row">
                         <div class="col">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" aria-describedby="nombre">
+                            {{ form.nombre.label(class="form-control-label") }}
+                            {{ form.nombre(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="apellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" aria-describedby="apellido">
+                            {{ form.apellido.label(class="form-control-label") }}
+                            {{ form.apellido(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="dni" class="form-label">DNI Nro.</label>
-                            <input type="text" class="form-control" id="dni" aria-describedby="dni">
+                            {{ form.dni.label(class="form-control-label") }}
+                            {{ form.dni(class="form-control") }}
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="row">
                         <div class="col">
-                            <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" aria-describedby="direccion">
+                            {{ form.direccion.label(class="form-control-label") }}
+                            {{ form.direccion(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" aria-describedby="telefono">
+                            {{ form.telefono.label(class="form-control-label") }}
+                            {{ form.telefono(class="form-control") }}
                         </div>
                         <div class="col">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="email">
+                            {{ form.email.label(class="form-control-label") }}
+                            {{ form.email(class="form-control") }}
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+            
+            {{ form.submit(class="btn btn-primary") }}
         </div>        
     </div>
 </form>
