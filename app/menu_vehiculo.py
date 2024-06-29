@@ -47,4 +47,3 @@ def gestionar_vehiculo():
             case _:
                 print("Opción inválida. Inténtalo nuevamente.")
     
-gestionar_vehiculo()

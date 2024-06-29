@@ -1,0 +1,126 @@
+{% extends "index.html" %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-green">
+    <div class="container-fluid justify-content-center">
+        <span>
+            Vehicle Dealership Management System Used
+        </span>
+        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Submit">
+    </div>
+    <form class="d-flex">
+        <button class="btn btn-perfil" type="submit">
+            <img src="{{ url_for('static', filename='images/Perfil.png') }}" alt="Submit" style="cursor: pointer;">
+        </button>
+    </form>
+</nav>
+{% endblock %}
+
+{% block form_compra%}
+<form class="mb-3">
+    <div class="mt-4">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="container-title">Vehiculo</h2>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <label for="dominio" class="form-label">Dominio</label>
+                            <input type="text" class="form-control" id="dominio" aria-describedby="dominio">
+                        </div>
+                        <div class="col">
+                            <label for="marca" class="form-label">Marca</label>
+                            <input type="text" class="form-control" id="marca" aria-describedby="marca">
+                        </div>
+                        <div class="col">
+                            <label for="modelo" class="form-label">Modelo</label>
+                            <input type="text" class="form-control" id="modelo" aria-describedby="modelo">
+                        </div>
+                        <div class="col">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <input type="text" class="form-control" id="tipo" aria-describedby="tipo">
+                        </div>
+                        <div class="col">
+                            <label for="anio" class="form-label">Años</label>
+                            <input type="text" class="form-control" id="anio" aria-describedby="anio">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <label for="kilometraje" class="form-label">Kilometraje</label>
+                            <input type="number" class="form-control" id="kilometraje" aria-describedby="kilometraje">
+                        </div>
+                        <div class="col">
+                            <label for="precioCompra" class="form-label">Precio de Compra</label>
+                            <input type="number" class="form-control" id="precioCompra" aria-describedby="precioCompra">
+                        </div>
+                        <div class="col">
+                            <label for="precioVenta" class="form-label">Precio de Venta</label>
+                            <input type="number" class="form-control" id="precioVenta" aria-describedby="precioVenta">
+                        </div>
+                        <div class="col">
+                            <label for="estado" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="estado" aria-describedby="estado">
+                        </div>
+                        <div class="col">
+                            <label class="form-label"></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Activo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    No Activo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-container mt-3">
+                <h2 class="container-title">Cliente Proveedor</h2>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" aria-describedby="nombre">
+                        </div>
+                        <div class="col">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" aria-describedby="apellido">
+                        </div>
+                        <div class="col">
+                            <label for="dni" class="form-label">DNI Nro.</label>
+                            <input type="text" class="form-control" id="dni" aria-describedby="dni">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" aria-describedby="direccion">
+                        </div>
+                        <div class="col">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="telefono" aria-describedby="telefono">
+                        </div>
+                        <div class="col">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+        </div>        
+    </div>
+</form>
+{% endblock %}

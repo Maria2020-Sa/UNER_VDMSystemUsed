@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+
+{% block title %}
+VDMS
+{% endblock %}
+
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-green">
+    <div class="container-fluid justify-content-center">
+        <span>
+            Vehicle Dealership Management System Used
+        </span>
+        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Submit">
+    </div>
+    <form class="d-flex">
+        <button class="btn btn-perfil" type="submit">
+            <img src="{{ url_for('static', filename='images/Perfil.png') }}" alt="Submit" style="cursor: pointer;">
+        </button>
+    </form>
+</nav>
+{% endblock %}
+
+{% block card%}
+    <div class="custom-container">
+        <div class="container">
+            <div class="row">
+                <div class="col ">
+                    <button onclick="window.location.href='{{ url_for('form_page') }}'" class="card text-center" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='images/compra.png') }}" class="card-img-top" alt="Submit" style="cursor: pointer;">
+                        <div class="card-body">
+                        <h5 class="card-title">Compra</h5>
+                        </div>
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="card text-center" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='images/venta.png') }}" class="card-img-top" alt="Submit" style="cursor: pointer;">
+                        <div class="card-body">
+                            <h5 class="card-title">Venta</h5>
+                        </div>
+                    </button>
+                </div>
+                <div class="col">
+                    <button class="card text-center" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='images/transacciones.png') }}" class="card-img-top" alt="Submit" style="cursor: pointer;">
+                        <div class="card-body">
+                        <h5 class="card-title">Transacciones</h5>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
