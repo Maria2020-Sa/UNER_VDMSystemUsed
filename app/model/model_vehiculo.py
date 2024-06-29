@@ -1,6 +1,6 @@
 class Vehiculo:
    
-   def __init__(self, dominio:str, marca:str,modelo:str,
+   def __init__(self,dominio:str, marca:str,modelo:str,
                 tipo:str,anio:int,kilometraje:float,
                 precio_compra:float,precio_venta:float,
                 estado:str, delete:str):
@@ -33,10 +33,6 @@ class Vehiculo:
             'delete': self.delete
         }   
 
-
    def __str__(self):
-      return  (
-         f"{{'id': {self.id}, 'dominio': {self.dominio}, 'marca': {self.marca}, "
-         f"'modelo': {self.modelo}, 'tipo': {self.tipo}, 'anio': {self.anio}, "
-         f"'kilometraje': {self.kilometraje}, 'precio_compra': {self.precio_compra}, "
-         f"'precio_venta': {self.precio_venta}, 'estado': {self.estado}, 'delete': {self.delete}}}" )
+      return f"""
+**|ID: {self.id_vehiculo} |Dominio': {self.dominio} |Marca: {self.marca} |Modelo: {self.modelo} |Tipo: {self.tipo} |Año: {self.anio} |Kilometraje: {self.kilometraje} |Precio de Compra: {self.precio_compra} |Precio de Venta: {self.precio_venta} |Estado: {self.estado} |Delete: {self.delete}"""
