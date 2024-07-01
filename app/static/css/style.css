@@ -97,3 +97,19 @@ img{
 .accordion-item,.accordion-header,.accordion-button{
     background: transparent;
 }
+
+/*footer*/
+footer{
+    text-align: center;
+    background: #5B9894;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.copyright{
+    color: #1C5350;
+    font-size: 20px;
+    margin: 10px 0;
+}
