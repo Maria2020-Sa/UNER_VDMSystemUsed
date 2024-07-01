@@ -7,3 +7,13 @@
 .bg-green{
     background-color: #5B9894;
 }
+
+.logo-left{
+    float: right;
+}
+
+.logo-rigth{
+    position: absolute;
+    right: 0px;
+    top: 7px
+}

@@ -1,0 +1,261 @@
+{% extends "navbar.html" %}
+
+{% block lista_venta %}
+
+<div class="container-table">
+    <div>
+        <h2 class="text-center">Inventario de Vehiculos</h2>
+    </div>
+    {% if inventario_venta|length == 0 %}
+    <p class="text-center"> No se encontraron registros para la venta </p>
+    {% endif %}
+    {% if inventario_venta|length != 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Dominio</th>
+                <th scope="col">Año</th>
+                <th scope="col">Km</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Estado</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehiculo in inventario_venta %}
+            <tr>
+                <td>{{ vehiculo.marca }}</td>
+                <td>{{ vehiculo.modelo }}</td>
+                <td>{{ vehiculo.tipo }}</td>
+                <td>{{ vehiculo.dominio }}</td>
+                <td>{{ vehiculo.anio }}</td>
+                <td>{{ vehiculo.kilometraje }}</td>
+                <td>{{ vehiculo.precio_venta }}</td>
+                <td>{{ vehiculo.estado }}</td>
+
+                <td>
+                    <!-- Formulario para la Venta -->
+                    <form id="ventaForm" action="/vender_vehiculo/{{ vehiculo.id_vehiculo}}" method="POST">
+
+                        <input type="hidden" name="_method" value="UPDATE">
+                        <button type="button" type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                            data-bs-target="#confirmModal{{ vehiculo.id_vehiculo }}">
+                            Vender
+                        </button>
+
+                        <!-- Modal de confirmación -->
+                        <div class="modal fade" id="confirmModal{{ vehiculo.id_vehiculo }}" tabindex="-1"
+                            aria-labelledby="confirmModalLabel{{ vehiculo.id_vehiculo }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Vender Vehículo</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mt-4">
+                                            <div class="container">
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="nombre" class="form-label">Nombre</label>
+                                                        <input type="text" class="form-control" id="nombre"
+                                                            name="nombre">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="apellido" class="form-label">Apellido</label>
+                                                        <input type="text" class="form-control" id="apellido"
+                                                            name="apellido">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="dni" class="form-label">DNI Nro</label>
+                                                        <input type="text" class="form-control" id="dni" name="dni">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="direccion" class="form-label">Dirección</label>
+                                                        <input type="text" class="form-control" id="direccion"
+                                                            name="direccion">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="telefono" class="form-label">Teléfono</label>
+                                                        <input type="text" class="form-control" id="telefono"
+                                                            name="telefono">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="email" class="form-label">Email</label>
+                                                        <input type="text" class="form-control" id="email" name="email">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="monto" class="form-label">Monto</label>
+                                                        <input type="text" class="form-control" id="monto" name="monto">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="observaciones"
+                                                            class="form-label">Observaciones</label>
+                                                        <input type="text" class="form-control" id="observaciones"
+                                                            name="observaciones">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <!-- Formulario para la edición -->
+                    <form id="editarForm" action="/reservar_vehiculo/{{ vehiculo.id_vehiculo}}" method="POST">
+                        <button type="submit" class="btn btn-outline-primary">
+                            Reservar
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <!-- Formulario para la edición -->
+                    <form id="editarForm" action="/editar_vehiculo/{{ vehiculo.id_vehiculo}}" method="POST">
+
+                        <input type="hidden" name="_method" value="UPDATE">
+                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                            data-bs-target="#confirmModalVehiculo{{ vehiculo.id_vehiculo }}">
+                            Editar
+                        </button>
+
+                        <!-- Modal de confirmación -->
+                        <div class="modal fade" id="confirmModalVehiculo{{ vehiculo.id_vehiculo }}" tabindex="-1"
+                            aria-labelledby="confirmModalLabel{{ vehiculo.id_vehiculo }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Editar Vehículo</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mt-4">
+                                            <div class="container">
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="dominio" class="form-label">Dominio</label>
+                                                        <input type="text" class="form-control" id="dominio"
+                                                            name="dominio" value="{{ vehiculo.dominio }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="marca" class="form-label">Marca</label>
+                                                        <input type="text" class="form-control" id="marca" name="marca"
+                                                            value="{{ vehiculo.marca }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="modelo" class="form-label">Modelo</label>
+                                                        <input type="text" class="form-control" id="modelo"
+                                                            name="modelo" value="{{ vehiculo.modelo }}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="tipo" class="form-label">Tipo</label>
+                                                        <input type="text" class="form-control" id="tipo" name="tipo"
+                                                            value="{{ vehiculo.tipo }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="anio" class="form-label">Año</label>
+                                                        <input type="text" class="form-control" id="anio" name="anio"
+                                                            value="{{ vehiculo.anio }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="kilometraje" class="form-label">Kilometraje</label>
+                                                        <input type="text" class="form-control" id="kilometraje"
+                                                            name="kilometraje" value="{{ vehiculo.kilometraje }}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="precio_venta" class="form-label">Precio de
+                                                            Venta</label>
+                                                        <input type="text" class="form-control" id="precio_venta"
+                                                            name="precio_venta" value="{{ vehiculo.precio_venta }}">
+                                                    </div>
+                                                    <div class="col d-none">
+                                                        <label for="precio_compra" class="form-label">Precio de
+                                                            Compra</label>
+                                                        <input type="text" class="form-control" id="precio_compra"
+                                                            name="precio_compra" value="{{ vehiculo.precio_compra }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="estado" class="form-label">Estado</label>
+                                                        <input type="text" class="form-control" id="estado"
+                                                            name="estado" value="{{ vehiculo.estado }}">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <!-- Formulario para la eliminación -->
+                    <form id="eliminarForm{{ vehiculo.id_vehiculo }}"
+                        action="/eliminar-vehiculo/{{ vehiculo.id_vehiculo }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                            data-bs-target="#confirmModalDelete{{ vehiculo.id_vehiculo }}">
+                            eliminar
+                        </button>
+
+                        <!-- Modal de confirmación -->
+                        <div class="modal fade" id="confirmModalDelete{{ vehiculo.id_vehiculo }}" tabindex="-1"
+                            aria-labelledby="confirmModalLabel{{ vehiculo.id_vehiculo }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmModalLabel{{ vehiculo.id_vehiculo }}">
+                                            Confirmación de Eliminación</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>¿Estás seguro que deseas eliminar el vehículo?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

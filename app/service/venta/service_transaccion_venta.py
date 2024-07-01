@@ -5,7 +5,7 @@ from model.model_transaccion import *
 from model.model_vehiculo import *
 from service.venta.service_cliente import agregar_cliente
 from service.venta.service_cliente import leer_datos_consumidor
-
+from service.service_vehiculo import busqueda_por_id
 
 archivo_transaccion_venta = "transaccion_venta.json"
 
@@ -44,17 +44,26 @@ def mapear_datos_transaccion(id_transaccion, formulario_venta, id_cliente):
     return Transaccion(id_transaccion_venta, id_vehiculo, id_cliente, tipo, fecha, monto, observaciones)
 
 def agregar_transaccion_venta(formulario_venta_json):
-    transaccion_venta_bd = leer_datos()
-    formulario_venta = json.loads(formulario_venta_json)
+    crear_archivo()
+    try:
 
-    if formulario_venta['id_cliente'] != None:
-        id_cliente = formulario_venta['id_cliente']
-        transaccion_venta = mapear_datos_transaccion(len(transaccion_venta_bd), formulario_venta, id_cliente)
-        transaccion_venta_bd.append(transaccion_venta.to_dict())
-        escribir_datos(transaccion_venta_bd)
-    else:
-        cliente = mapear_datos_cliente(formulario_venta)
-        id_cliente = agregar_cliente(cliente)
-        transaccion_venta = mapear_datos_transaccion(len(transaccion_venta_bd), formulario_venta, id_cliente)
-        transaccion_venta_bd.append(transaccion_venta.to_dict())
-        escribir_datos(transaccion_venta_bd)
+        transaccion_venta_bd = leer_datos()
+        formulario_venta = json.loads(formulario_venta_json)
+
+        if formulario_venta['id_cliente'] != None:
+            id_cliente = formulario_venta['id_cliente']
+            transaccion_venta = mapear_datos_transaccion(len(transaccion_venta_bd), formulario_venta, id_cliente)
+            transaccion_venta_bd.append(transaccion_venta.to_dict())
+            escribir_datos(transaccion_venta_bd)
+            busqueda_por_id(transaccion_venta.id_vehiculo)
+        else:
+            cliente = mapear_datos_cliente(formulario_venta)
+            id_cliente = agregar_cliente(cliente)
+            transaccion_venta = mapear_datos_transaccion(len(transaccion_venta_bd), formulario_venta, id_cliente)
+            transaccion_venta_bd.append(transaccion_venta.to_dict())
+            escribir_datos(transaccion_venta_bd)
+            busqueda_por_id(transaccion_venta.id_vehiculo)
+        return 200
+    except Exception as e:
+        print("ese",e)
+        return 500        

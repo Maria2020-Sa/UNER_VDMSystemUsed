@@ -60,5 +60,11 @@ img{
 .navbar img.logo {
     position: absolute;
     left: 0px;
-    top: 7px;
+    top: 0px;
+}
+
+
+.container-table{
+    margin-top: 20px;
+    padding: 40px;
 }

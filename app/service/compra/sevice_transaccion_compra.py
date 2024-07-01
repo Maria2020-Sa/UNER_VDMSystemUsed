@@ -35,13 +35,20 @@ def mapear_datos(id_transaccion, vehiculos: Vehiculo, cliente_proveedor, formula
     return Transaccion(id_transaccion_compra, id_vehiculo_compra, id_cliente_proveedor, tipo, fecha, monto, observaciones).to_dict()
 
 def agregar_transaccion_compra(formulario_json):
-    transaccion_compra_bd = leer_datos()
-    formulario_diccionario = json.loads(formulario_json)
+    try:
+        crear_archivo()
+        transaccion_compra_bd = leer_datos()
+        formulario_diccionario = json.loads(formulario_json)
+        print("formularios", formulario_diccionario)
 
-    # Crear instancias de las clases
-    vehiculos = Vehiculo(**formulario_diccionario["vehiculo"])
-    cliente_proveedor = Cliente(**formulario_diccionario["cliente"])
+        # Crear instancias de las clases
+        vehiculos = Vehiculo(**formulario_diccionario["vehiculo"])
+        cliente_proveedor = Cliente(**formulario_diccionario["cliente"])
 
-    transaccion_compra = mapear_datos(len(transaccion_compra_bd), vehiculos, cliente_proveedor, formulario_diccionario)
-    transaccion_compra_bd.append(transaccion_compra)
-    escribir_datos(transaccion_compra_bd)
+        transaccion_compra = mapear_datos(len(transaccion_compra_bd), vehiculos, cliente_proveedor, formulario_diccionario)
+        transaccion_compra_bd.append(transaccion_compra)
+        escribir_datos(transaccion_compra_bd)
+        return 200
+    except Exception as e:
+        print(e)
+        return 500 

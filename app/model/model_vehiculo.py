@@ -1,9 +1,11 @@
 class Vehiculo:
    
-   def __init__(self,dominio:str, marca:str,modelo:str,
+   def __init__(self,
+                id_vehiculo:str, dominio:str, marca:str,modelo:str,
                 tipo:str,anio:int,kilometraje:float,
                 precio_compra:float,precio_venta:float,
                 estado:str, delete:str):
+      self.id_vehiculo = id_vehiculo
       self.dominio = dominio
       self.marca = marca
       self.modelo = modelo
