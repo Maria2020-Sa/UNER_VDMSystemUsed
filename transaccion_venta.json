@@ -1,0 +1,65 @@
+[
+    {
+        "id_transaccion": 0,
+        "id_vehiculo": 6,
+        "id_cliente": 0,
+        "tipo": "Venta",
+        "fecha": "2024-06-30T21:15:00",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    },
+    {
+        "id_transaccion": 1,
+        "id_vehiculo": 7,
+        "id_cliente": 1,
+        "tipo": "Venta",
+        "fecha": "2024-06-30T21:20:00",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    },
+    {
+        "id_transaccion": 2,
+        "id_vehiculo": 8,
+        "id_cliente": 0,
+        "tipo": "Venta",
+        "fecha": "2024-07-01T13:13:11",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    },
+    {
+        "id_transaccion": 3,
+        "id_vehiculo": 8,
+        "id_cliente": 0,
+        "tipo": "Venta",
+        "fecha": "2024-07-01T13:14:03",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    },
+    {
+        "id_transaccion": 4,
+        "id_vehiculo": 8,
+        "id_cliente": 0,
+        "tipo": "Venta",
+        "fecha": "2024-07-01T13:14:24",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    },
+    {
+        "id_transaccion": 5,
+        "id_vehiculo": 8,
+        "id_cliente": 0,
+        "tipo": "Venta",
+        "fecha": "2024-07-01T13:15:02",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    },
+    {
+        "id_transaccion": 6,
+        "id_vehiculo": 8,
+        "id_cliente": 1,
+        "tipo": "Venta",
+        "fecha": "2024-07-01T13:39:24",
+        "monto": "50.000",
+        "observaciones": "Se vende por menor costo"
+    }
+]

@@ -29,6 +29,12 @@ body {
     background-color: transparent !important;
     height: 100%;
 }
+
+.container-main{
+    background-color: transparent !important;
+    height: 100%;
+    width: 100%;
+}
 .container {
     background-color: transparent !important;
 }
@@ -109,7 +115,6 @@ footer{
     text-align: center;
     background: #5B9894;
     width: 100%;
-    position: fixed;
     bottom: 0;
     left: 0;
 }
@@ -118,4 +123,9 @@ footer{
     color: #1C5350;
     font-size: 20px;
     margin: 10px 0;
+}
+
+.table-container {
+    max-height: 400px; /* Ajusta la altura según sea necesario */
+    overflow-y: auto;
 }

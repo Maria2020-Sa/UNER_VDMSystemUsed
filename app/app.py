@@ -6,8 +6,8 @@ from model.form.transaccion_venta_form import TransaccionVentFormModel
 from model.model_cliente import Cliente
 from model.model_vehiculo import Vehiculo
 from model.form.model_transaccion_form import TransaccionFormModel
-from service.compra.sevice_transaccion_compra import agregar_transaccion_compra,busqueda_por_id_transaccion,mostrar_vehiculos_proveedores,busqueda_por_id_transaccion_vehiculo
-from service.compra.service_cliente_proveedor import mostrar_clientes_proveedores, borrado_logico_cliente_proveedor, editar_dato_cliente_proveedor, busqueda_por_dni
+from service.compra.sevice_transaccion_compra import agregar_transaccion_compra,busqueda_por_id_transaccion,mostrar_vehiculos_proveedores,busqueda_por_id_transaccion_vehiculo,mostrar_transaccion_compra
+from service.compra.service_cliente_proveedor import mostrar_clientes_proveedores, borrado_logico_cliente_proveedor, editar_dato_cliente_proveedor, busqueda_por_dni,busqueda_cliente_por_id
 from service.venta.service_transaccion_venta import agregar_transaccion_venta,busqueda_por_id_transaccion_venta
 from service.venta.service_cliente import mostrar_clientes_consumidores,borrado_logico_cliente_consumidor, editar_dato_cliente_consumidor
 from service.service_vehiculo  import mostrar_inventario, borrado_logico, editar_dato, reservar_vehiculo_por_id
@@ -261,7 +261,30 @@ def ver_vehiculos_vendidos(id_cliente):
             return render_template('lista_vehiculos_proveedor.html', inventario_lista_vehiculos=response)
     else:
         return 'Método no permitido', 405
-    
+
+
+@app.route('/por_rango_fecha', methods=['GET', 'POST'])
+def por_rango_fecha():
+    response = []
+    if request.method == 'POST':
+        start_date = request.form.get('start_date')
+        end_date = request.form.get('end_date')
+        
+        # Convertir las fechas de string a datetime
+        start_date = datetime.strptime(start_date, '%Y-%m-%d')
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        
+        # Cargar datos del archivo JSON
+        data = mostrar_transaccion_compra()
+
+        # Filtrar los eventos por el rango de fechas
+        for event in data:
+            event_date = datetime.strptime(event['fecha'], '%Y-%m-%dT%H:%M:%S')
+            if start_date <= event_date <= end_date:
+                response.append(busqueda_cliente_por_id(event['id_cliente']))
+
+    print(response)
+    return render_template('cliente_proveedor.html', clientes_proveedores=response)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -100,3 +100,7 @@ def mostrar_vehiculos_proveedores():
         return vehiculos_response
     except Exception as e:
         return []                     
+    
+def mostrar_transaccion_compra():
+     transaccion_compra = leer_datos()
+     return transaccion_compra;    
