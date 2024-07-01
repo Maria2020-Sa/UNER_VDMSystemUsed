@@ -63,9 +63,20 @@ def mostrar_clientes_proveedores():
     return clientes_proveedores
 
 def busqueda_por_dni(dni):
-    clientes = leer_datos()
-    cliente_response = []
-    for value in clientes:
-        if(value['dni'] == dni):
-            cliente_response.append(value)
-    return cliente_response
+    try:
+        clientes = leer_datos()
+        for value in clientes:
+            if(value['dni'] == dni and value['delete'] != 1):
+                return value
+    except Exception as e:
+        return ''
+    
+
+def busqueda_cliente_por_id(id):
+    try:
+        clientes = leer_datos()
+        for value in clientes:
+            if(value['id_cliente'] == id):
+                return value
+    except Exception as e:
+        return ''

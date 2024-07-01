@@ -1,7 +1,7 @@
 
 class Cliente:
 
-   def __init__(self,id_cliente:int, nombre:str, apellido:str,dni:int,direccion:str,telefono:str,email:str,delete:str):
+   def __init__(self,id_cliente, nombre:str, apellido:str,dni:int,direccion:str,telefono:str,email:str,delete:str):
       self.id_cliente = id_cliente
       self.nombre = nombre
       self.apellido = apellido

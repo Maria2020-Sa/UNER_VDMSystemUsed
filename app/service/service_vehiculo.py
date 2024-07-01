@@ -98,3 +98,10 @@ def reservar_vehiculo_por_id(id):
         return 200
     except Exception as e:
         return 500         
+    
+
+def busqueda_vehiculo_por_id(id):
+    vehiculos = leer_datos()
+    for value in vehiculos:
+        if(value['id_vehiculo'] == id):
+            return value

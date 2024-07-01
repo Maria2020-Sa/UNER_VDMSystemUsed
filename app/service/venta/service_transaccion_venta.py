@@ -4,8 +4,7 @@ from model.model_cliente import *
 from model.model_transaccion import *
 from model.model_vehiculo import *
 from service.venta.service_cliente import agregar_cliente
-from service.venta.service_cliente import leer_datos_consumidor
-from service.service_vehiculo import busqueda_por_id
+from service.service_vehiculo import busqueda_por_id, busqueda_vehiculo_por_id
 
 archivo_transaccion_venta = "transaccion_venta.json"
 
@@ -66,3 +65,21 @@ def agregar_transaccion_venta(formulario_venta_json):
         return 200
     except Exception as e:
         return 500        
+
+def busqueda_por_id_transaccion_venta(id_cliente):
+        try:
+
+            transaccion_compra_bd = leer_datos()
+
+            id_transacciones_response = []
+            for transaccion in transaccion_compra_bd:
+                if(transaccion['id_cliente'] == id_cliente):
+                    id_transacciones_response.append(transaccion['id_vehiculo'])
+
+            vehiculos_response = []
+            for id in id_transacciones_response:
+                vehiculos_response.append(busqueda_vehiculo_por_id(id))
+
+            return vehiculos_response
+        except Exception as e:
+            return [] 

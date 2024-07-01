@@ -1,0 +1,38 @@
+{% extends "transaccion.html" %}
+
+<h1>holaaa</h1>
+{% block listado_clientes_x_vehiculos %}
+<div class="container-table-proveedor">
+    <div>
+        <h2 class="text-center">Clientes por Vehiculos</h2>
+    </div>
+    {% if inventario_lista_clientes == '' %}
+    <p class="text-center"> No se encontraron registros de clientes </p>
+    {% endif %}
+
+    {% if inventario_lista_clientes != '' %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Dni</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ cliente_response.nombre }}</td>
+                <td>{{ cliente_response.apellido }}</td>
+                <td>{{ cliente_response.dni }}</td>
+                <td>{{ cliente_response.direccion }}</td>
+                <td>{{ cliente_response.telefono }}</td>
+                <td>{{ cliente_response.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

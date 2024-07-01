@@ -22,7 +22,7 @@
                                 </form>
                             </li>
                             <li class="nav-item">
-                                <form action="{{ url_for('transaccion', valor='cliente') }}" method="POST" style="display: inline;">
+                                <form action="{{ url_for('transaccion', valor='vehiculo') }}" method="POST" style="display: inline;">
                                     <button type="submit" class="btn btn-link nav-link">Por Vehiculo</button>
                                 </form>
                             </li>
@@ -43,7 +43,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <li class="nav-item">
-                                    <form action="{{ url_for('transaccion', valor='cliente') }}" method="POST" style="display: inline;">
+                                    <form action="{{ url_for('transaccion', valor='clientev') }}" method="POST" style="display: inline;">
                                         <button type="submit" class="btn btn-link nav-link">Por Cliente</button>
                                     </form>
                                 </li>
@@ -56,6 +56,12 @@
     </div>
     <div class="container-right">
         {% block cliente_proveedor %}   {% endblock %}
+        
+        {% block lista_vehiculos_proveedor %}{% endblock %}
+
+        {% block listado_clientes_x_vehiculos %}{% endblock %}
+
+        {% block cliente_consumidor %}{% endblock %}
     </div>
 </div>
 {% endblock %}

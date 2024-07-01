@@ -60,50 +60,58 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="mt-4">
+                                        <div>
                                             <div class="container">
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <label for="nombre" class="form-label">Nombre</label>
                                                         <input type="text" class="form-control" id="nombre"
-                                                            name="nombre">
+                                                            name="nombre"
+                                                            value="{{ cliente.nombre if cliente else '' }}">
                                                     </div>
                                                     <div class="col">
                                                         <label for="apellido" class="form-label">Apellido</label>
                                                         <input type="text" class="form-control" id="apellido"
-                                                            name="apellido">
+                                                            name="apellido"
+                                                            value="{{ cliente.apellido if cliente else '' }}">
                                                     </div>
                                                     <div class="col">
                                                         <label for="dni" class="form-label">DNI Nro</label>
-                                                        <input type="text" class="form-control" id="dni" name="dni">
+                                                        <input type="text" class="form-control" id="dni" name="dni"
+                                                            value="{{ cliente.dni if cliente else '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <label for="direccion" class="form-label">Dirección</label>
                                                         <input type="text" class="form-control" id="direccion"
-                                                            name="direccion">
+                                                            name="direccion"
+                                                            value="{{ cliente.direccion if cliente else '' }}">
                                                     </div>
                                                     <div class="col">
                                                         <label for="telefono" class="form-label">Teléfono</label>
                                                         <input type="text" class="form-control" id="telefono"
-                                                            name="telefono">
+                                                            name="telefono"
+                                                            value="{{ cliente.telefono if cliente else '' }}">
                                                     </div>
                                                     <div class="col">
                                                         <label for="email" class="form-label">Email</label>
-                                                        <input type="text" class="form-control" id="email" name="email">
+                                                        <input type="text" class="form-control" id="email" name="email"
+                                                            value="{{ cliente.email if cliente else '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <label for="monto" class="form-label">Monto</label>
-                                                        <input type="text" class="form-control" id="monto" name="monto">
+                                                        <input type="text" class="form-control" id="monto" name="monto"
+                                                            value="{{ cliente.monto if cliente else '' }}">
                                                     </div>
                                                     <div class="col">
                                                         <label for="observaciones"
                                                             class="form-label">Observaciones</label>
                                                         <input type="text" class="form-control" id="observaciones"
-                                                            name="observaciones">
+                                                            name="observaciones"
+                                                            value="{{ cliente.observaciones if cliente else '' }}">
                                                     </div>
                                                 </div>
 

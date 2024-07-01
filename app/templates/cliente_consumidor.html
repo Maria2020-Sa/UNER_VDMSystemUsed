@@ -1,0 +1,145 @@
+{% extends "transaccion.html" %}
+
+{% block cliente_consumidor %}
+
+    {% if clientes_consumidores|length == 0 %}
+        <p class="text-center"> No se encontraron registros </p>
+    {% endif %}
+    {% if clientes_consumidores|length != 0 %}
+    <table class="table txt-table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Email</th>
+                <th scope="col">Ver Compras</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Elimnar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for clientes in clientes_consumidores %}
+            <tr>
+                <td>{{ clientes.nombre }}</td>
+                <td>{{ clientes.apellido }}</td>
+                <td>{{ clientes.dni }}</td>
+                <td>{{ clientes.direccion }}</td>
+                <td>{{ clientes.telefono }}</td>
+                <td>{{ clientes.email }}</td>
+                <td>
+                    <!-- ver listado de vehiculos vendidos -->
+                    <form id="vehiculos_vendidos" action="/ver_vehiculos_vendidos/{{ clientes.id_cliente}}" method="POST">
+                       <button type="submit" type="button" class="btn btn-outline-success txt-table">
+                            Ver Ventas
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <!-- Formulario para la edición del cliente -->
+                    <form id="editarClienteForm" action="/editar_cliente_venta/{{ clientes.id_cliente}}" method="POST">
+                        <button type="button" class="btn btn-outline-warning txt-table" data-bs-toggle="modal"
+                            data-bs-target="#confirmModalClienteConsumidor{{ clientes.id_cliente }}">
+                            Editar
+                        </button>
+
+                        <!-- Modal de confirmación -->
+                        <div class="modal fade" id="confirmModalClienteConsumidor{{ clientes.id_cliente }}" tabindex="-1"
+                            aria-labelledby="confirmModalLabel{{ clientes.id_cliente }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Editar Cliente</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mt-4">
+                                            <div class="container">
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="nombre" class="form-label">Nombre</label>
+                                                        <input type="text" class="form-control" id="nombre"
+                                                            name="nombre" value="{{ clientes.nombre }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="apellido" class="form-label">Apellido</label>
+                                                        <input type="text" class="form-control" id="apellido" name="apellido"
+                                                            value="{{ clientes.apellido }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="dni" class="form-label">DNI</label>
+                                                        <input type="text" class="form-control" id="dni"
+                                                            name="dni" value="{{ clientes.dni }}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <label for="direccion" class="form-label">Dirección</label>
+                                                        <input type="text" class="form-control" id="direccion" name="direccion"
+                                                            value="{{ clientes.direccion }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="telefono" class="form-label">Teléfono</label>
+                                                        <input type="text" class="form-control" id="telefono" name="telefono"
+                                                            value="{{ clientes.telefono }}">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="email" class="form-label">Email</label>
+                                                        <input type="text" class="form-control" id="email"
+                                                            name="email" value="{{ clientes.email }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <!-- Formulario para la eliminación del cliente -->
+                    <form id="eliminarClienteForm" action="/eliminar_cliente_venta/{{ clientes.id_cliente}}" method="POST">
+                        <button type="button" class="btn btn-outline-danger txt-table" data-bs-toggle="modal"
+                        data-bs-target="#confirmModalDeleteClienteVenta{{ clientes.id_cliente }}">
+                            Eliminar
+                        </button>
+
+                        <!-- Modal de confirmación -->
+                        <div class="modal fade" id="confirmModalDeleteClienteVenta{{ clientes.id_cliente }}" tabindex="-1"
+                            aria-labelledby="confirmModalLabel{{ clientes.id_cliente }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmModalLabel{{ clientes.id_cliente }}">
+                                            Confirmación de Eliminación</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>¿Estás seguro que deseas eliminar el cliente?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

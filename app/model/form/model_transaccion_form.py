@@ -25,6 +25,7 @@ class TransaccionFormModel:
                     "delete": self.vehiculo.delete
                 },
                 "cliente": {
+                    "id_cliente": self.cliente.id_cliente,
                     "nombre": self.cliente.nombre,
                     "apellido": self.cliente.apellido,
                     "dni": self.cliente.dni,

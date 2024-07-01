@@ -25,30 +25,52 @@ def agregar_cliente(cliente: Cliente):
     return cliente.id_cliente
 
 #Editar:
-def editar_dato_cliente(id_cliente, cliente: Cliente):
-    cliente = leer_datos_consumidor()
-    for value in cliente:
-        if value['id_cliente'] == id_cliente:
-            value['nombre'] = cliente.nombre
-            value['apellido'] = cliente.apellido
-            value['dni'] = cliente.dni
-            value['direccion'] = cliente.direccion
-            value['telefono'] = cliente.telefono
-            value['email'] = cliente.email
-    escribir_datos(cliente)
+def editar_dato_cliente_consumidor(id_cliente, cliente: Cliente):
+    try:
+        clientes = leer_datos_consumidor()
+        for value in clientes:
+            if value['id_cliente'] == id_cliente:
+                value['nombre'] = cliente.nombre
+                value['apellido'] = cliente.apellido
+                value['dni'] = cliente.dni
+                value['direccion'] = cliente.direccion
+                value['telefono'] = cliente.telefono
+                value['email'] = cliente.email
+        escribir_datos(clientes)
+        return 200
+    except Exception as e:
+        return 500
 
 #Eliminar:
-def borrado_logico_cliente(id_cliente):
-    cliente = leer_datos_consumidor()
-    for value in cliente:
-        if(value['id_cliente'] == id_cliente):
-            value['delete']=1
-    escribir_datos(cliente)        
+def borrado_logico_cliente_consumidor(id_cliente):
+    try:
+        cliente = leer_datos_consumidor()
+        for value in cliente:
+            if(value['id_cliente'] == id_cliente):
+                value['delete']=1
+        escribir_datos(cliente)
+        return 200
+    except Exception as e:
+        return 500        
 
 #Listados.
-def mostrar_clientes():
-    datos = leer_datos_consumidor()
-    clientes = [Cliente(**dato) for dato in datos]
-    for value in clientes:
-        if(value.delete != 1):
-            print(value)
+def mostrar_clientes_consumidores():
+    try:
+        datos = leer_datos_consumidor()
+        clientes_consumidor = []
+        for value in datos:
+            if(value['delete'] != 1):
+                clientes_consumidor.append(value)
+        return clientes_consumidor
+    except Exception as e:
+        return 500
+
+
+def busqueda_por_dni_consumidor(dni):
+    try:
+        clientes = leer_datos_consumidor()
+        for value in clientes:
+            if(value['dni'] == dni):
+                return value
+    except Exception as e:
+        return ''            

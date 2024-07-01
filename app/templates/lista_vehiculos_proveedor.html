@@ -1,0 +1,58 @@
+{% extends "transaccion.html" %}
+
+
+{% block lista_vehiculos_proveedor %}
+<div class="container-table-proveedor">
+    <div>
+        <h2 class="text-center">Vehiculos Comprados al Cliente</h2>
+    </div>
+    {% if inventario_lista_vehiculos|length == 0 %}
+        <p class="text-center"> No se encontraron registros de compra del cliente </p>
+    {% endif %}
+
+    {% if inventario_lista_vehiculos|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Dominio</th>
+                    <th scope="col">Año</th>
+                    <th scope="col">Km</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Estado</th>
+                    {% if compra==1 %} 
+                        <th scope="col"></th>
+                    {% endif%}
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculo in inventario_lista_vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.marca }}</td>
+                    <td>{{ vehiculo.modelo }}</td>
+                    <td>{{ vehiculo.tipo }}</td>
+                    <td>{{ vehiculo.dominio }}</td>
+                    <td>{{ vehiculo.anio }}</td>
+                    <td>{{ vehiculo.kilometraje }}</td>
+                    <td>{{ vehiculo.precio_venta }}</td>
+                    <td>{{ vehiculo.estado }}</td>
+                    {% if compra==1 %} 
+                        <td>
+                            <!-- ver listado de vehiculos comprados -->
+                            <form id="vehiculos_comprados" action="/ver_clientes_x_vehiculos/{{ vehiculo.id_vehiculo}}" method="POST">
+                                <button type="submit" type="button" class="btn btn-outline-success txt-table">
+                                    Ver Proveedores
+                                </button>
+                            </form>
+                        </td>
+                    {% endif%}
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+</div>    
+{% endblock %}
