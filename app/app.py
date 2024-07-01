@@ -7,6 +7,7 @@ from model.model_cliente import Cliente
 from model.model_vehiculo import Vehiculo
 from model.form.model_transaccion_form import TransaccionFormModel
 from service.compra.sevice_transaccion_compra import agregar_transaccion_compra
+from service.compra.service_cliente_proveedor import mostrar_clientes_proveedores, borrado_logico_cliente_proveedor, editar_dato_cliente_proveedor
 from service.venta.service_transaccion_venta import agregar_transaccion_venta
 from service.service_vehiculo  import mostrar_inventario, borrado_logico, editar_dato, reservar_vehiculo_por_id
 
@@ -36,12 +37,10 @@ def submit():
         transaccionForm = TransaccionFormModel(cliente, vehiculo, tipo, fecha, observaciones).to_dict()
         json_resultado = json.dumps(transaccionForm)
         response = agregar_transaccion_compra(json_resultado)
-        print("response", response)
         if int(response) == 200:
             flash(f'Guardado con exito!', 'success')
             return redirect(url_for('home'))
     else:
-            print("Form validation failed")
             print(form.errors)
             return render_template('form.html', form=form)
     
@@ -61,7 +60,6 @@ def eliminar_vehiculo(vehiculo_id):
         response  = borrado_logico(vehiculo_id)
         if int(response) == 200:
             inventario_venta = mostrar_inventario()
-            flash(f'Vehículo con ID {vehiculo_id} eliminado correctamente', 'success')
             return render_template('lista_venta.html', inventario_venta=inventario_venta)
     else:
         return 'Método no permitido', 405
@@ -110,9 +108,7 @@ def vender_vehiculo(id_vehiculo):
     json_resultado = json.dumps(transaccion_venta_vehiculo)
     
     if request.method == 'POST':
-        print("holaaaa")
         response = agregar_transaccion_venta(json_resultado)
-        print("holaaaa", response)
         if int(response) == 200:
             inventario_venta = mostrar_inventario()            
             return render_template('lista_venta.html', inventario_venta=inventario_venta)
@@ -128,7 +124,6 @@ def reservar_vehiculo(id_vehiculo):
     if request.method == 'POST':
         
         response = reservar_vehiculo_por_id(id_vehiculo)
-        print(response)
         if int(response) == 200:
             inventario_venta = mostrar_inventario()            
             return render_template('lista_venta.html', inventario_venta=inventario_venta)
@@ -137,6 +132,50 @@ def reservar_vehiculo(id_vehiculo):
     inventario_venta = mostrar_inventario() 
     return render_template('lista_venta.html', inventario_venta=inventario_venta)  
 
+
+@app.route('/transaccion/<string:valor>',  methods=['POST','GET'])
+def transaccion(valor):
+    if request.method == 'POST':
+        if(valor == 'cliente'):
+            print("Entreeeeeee")
+            clientes_proveedores = mostrar_clientes_proveedores()
+            return render_template('cliente_proveedor.html', clientes_proveedores=clientes_proveedores)
+    
+    
+    clientes_proveedores = mostrar_clientes_proveedores()
+    return render_template('cliente_proveedor.html', clientes_proveedores=clientes_proveedores)    
+
+
+# Ruta para manejar la eliminación de un cliente0
+@app.route('/eliminar_cliente/<int:id_cliente>', methods=['POST', 'DELETE'])
+def eliminar_cliente(id_cliente):
+    if request.method == 'POST' or request.method == 'DELETE':
+        response  = borrado_logico_cliente_proveedor(id_cliente)
+        if int(response) == 200:
+            clientes_proveedores = mostrar_clientes_proveedores()
+            return render_template('cliente_proveedor.html', clientes_proveedores=clientes_proveedores)
+    else:
+        return 'Método no permitido', 405
+
+# Ruta para manejar la edición de un cliente
+@app.route('/editar_cliente/<int:id_cliente>', methods=['POST', 'UPDATE'])
+def editar_cliente(id_cliente):
+     # Obtener los datos del formulario
+    nombre = request.form['nombre']
+    apellido = request.form['apellido']
+    dni = request.form['dni']
+    direccion = request.form['direccion']
+    telefono = request.form['telefono']
+    email = request.form['email']
+    cliente = Cliente('0',nombre,apellido,dni,direccion,telefono,email,'0')
+    if request.method == 'POST':
+        response  = editar_dato_cliente_proveedor(id_cliente, cliente)
+        if int(response) == 200:
+            clientes_proveedores = mostrar_clientes_proveedores()
+            return render_template('cliente_proveedor.html', clientes_proveedores=clientes_proveedores)
+    else:
+        return 'Método no permitido', 405    
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

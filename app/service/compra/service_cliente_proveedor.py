@@ -25,32 +25,42 @@ def agregar_cliente_proveedor(cliente_proveedor: Cliente):
     return cliente_proveedor.id_cliente
 
 #Editar:
-def editar_dato_cliente_proveedor(id_cliente_proveedor, cliente_proveedor: Cliente):
-    clientes_proveedores = leer_datos()
-    for value in clientes_proveedores:
-        if value['id_cliente_proveedor'] == id_cliente_proveedor:
-            value['nombre'] = cliente_proveedor.nombre
-            value['apellido'] = cliente_proveedor.apellido
-            value['dni'] = cliente_proveedor.dni
-            value['direccion'] = cliente_proveedor.direccion
-            value['telefono'] = cliente_proveedor.telefono
-            value['email'] = cliente_proveedor.email
-    escribir_datos(clientes_proveedores)
+def editar_dato_cliente_proveedor(id_cliente, cliente_proveedor: Cliente):
+    try:
+        clientes_proveedores = leer_datos()
+        for value in clientes_proveedores:
+            if value['id_cliente'] == id_cliente:
+                value['nombre'] = cliente_proveedor.nombre
+                value['apellido'] = cliente_proveedor.apellido
+                value['dni'] = cliente_proveedor.dni
+                value['direccion'] = cliente_proveedor.direccion
+                value['telefono'] = cliente_proveedor.telefono
+                value['email'] = cliente_proveedor.email
+        escribir_datos(clientes_proveedores)
+        return 200
+    except Exception as e:
+        return 500
 
 #Eliminar:
-def borrado_logico_cliente_proveedor(id_cliente_proveedor):
-    clientes_proveedores = leer_datos()
-    for value in clientes_proveedores:
-        if(value['id_cliente_proveedor'] == id_cliente_proveedor):
-            value['delete'] = 1
-    escribir_datos(clientes_proveedores)        
+def borrado_logico_cliente_proveedor(id_cliente):
+    try:
+        clientes_proveedores = leer_datos()
+        for value in clientes_proveedores:
+            if(value['id_cliente'] == id_cliente):
+                value['delete'] = 1
+        escribir_datos(clientes_proveedores)
+        return 200
+    except Exception as e:
+        return 500        
 
 #Listados:
 def mostrar_clientes_proveedores():
     datos = leer_datos()
+    clientes_proveedores = []
     for value in datos:
         if(value['delete'] != 1):
-            print(value)
+            clientes_proveedores.append(value)
+    return clientes_proveedores
 
 def busqueda_por_dni(dni):
     clientes = leer_datos()

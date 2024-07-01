@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <div class="col">
-                    <button class="card text-center" style="width: 18rem;">
+                    <button onclick="window.location.href='{{ url_for('transaccion', valor='cliente') }}'" class="card text-center" style="width: 18rem;">
                         <img src="{{ url_for('static', filename='images/transacciones.png') }}" class="card-img-top" alt="Submit" style="cursor: pointer;">
                         <div class="card-body">
                         <h5 class="card-title">Transacciones</h5>

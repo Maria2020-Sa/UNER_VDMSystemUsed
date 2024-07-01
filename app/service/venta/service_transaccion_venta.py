@@ -65,5 +65,4 @@ def agregar_transaccion_venta(formulario_venta_json):
             busqueda_por_id(transaccion_venta.id_vehiculo)
         return 200
     except Exception as e:
-        print("ese",e)
         return 500        

@@ -39,8 +39,6 @@ def agregar_transaccion_compra(formulario_json):
         crear_archivo()
         transaccion_compra_bd = leer_datos()
         formulario_diccionario = json.loads(formulario_json)
-        print("formularios", formulario_diccionario)
-
         # Crear instancias de las clases
         vehiculos = Vehiculo(**formulario_diccionario["vehiculo"])
         cliente_proveedor = Cliente(**formulario_diccionario["cliente"])
@@ -50,5 +48,4 @@ def agregar_transaccion_compra(formulario_json):
         escribir_datos(transaccion_compra_bd)
         return 200
     except Exception as e:
-        print(e)
         return 500 

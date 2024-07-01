@@ -59,8 +59,6 @@ def borrado_logico(id_vehiculo):
 def mostrar_inventario():
     datos = leer_datos()
     vehiculos = [mapear_vehiculo(dato) for dato in datos]
-
-    print(vehiculos)
     vehiculos_disponibles = []
     for vehiculo in vehiculos:
         if(vehiculo.delete != 1):
