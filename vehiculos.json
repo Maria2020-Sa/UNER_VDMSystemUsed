@@ -152,8 +152,8 @@
         "kilometraje": "1300",
         "precio_compra": "1000000",
         "precio_venta": "1500000",
-        "estado": "Washington",
-        "delete": "Activo"
+        "estado": "Reservado",
+        "delete": 1
     },
     {
         "id_vehiculo": 12,
@@ -165,7 +165,85 @@
         "kilometraje": "1300",
         "precio_compra": "1000000",
         "precio_venta": "1500000",
-        "estado": "Washington",
-        "delete": "Activo"
+        "estado": "vendido",
+        "delete": 1
+    },
+    {
+        "id_vehiculo": 13,
+        "dominio": "ABC123",
+        "marca": "Toyota",
+        "modelo": "Corolla",
+        "tipo": "Sedan",
+        "anio": "2017",
+        "kilometraje": "75000",
+        "precio_compra": "12000",
+        "precio_venta": "20000",
+        "estado": "vendido",
+        "delete": 1
+    },
+    {
+        "id_vehiculo": 14,
+        "dominio": "KQU-1323",
+        "marca": "Fiat",
+        "modelo": "Adventure",
+        "tipo": "sedan 5 puertas",
+        "anio": "2010",
+        "kilometraje": "200000",
+        "precio_compra": "2000000",
+        "precio_venta": "3500000",
+        "estado": "usado",
+        "delete": 1
+    },
+    {
+        "id_vehiculo": 15,
+        "dominio": "KQU-1323",
+        "marca": "Fiat",
+        "modelo": "Corolla",
+        "tipo": "sedan 5 puertas",
+        "anio": "2010",
+        "kilometraje": "200000",
+        "precio_compra": "12000",
+        "precio_venta": "3500000",
+        "estado": "vendido",
+        "delete": 1
+    },
+    {
+        "id_vehiculo": 16,
+        "dominio": "KQU-1323",
+        "marca": "Fiat",
+        "modelo": "Adventure",
+        "tipo": "sedan 5 puertas",
+        "anio": "2010",
+        "kilometraje": "200000",
+        "precio_compra": "2000000",
+        "precio_venta": "3500000",
+        "estado": "usado",
+        "delete": 1
+    },
+    {
+        "id_vehiculo": 17,
+        "dominio": "KQU-1323",
+        "marca": "Fiat",
+        "modelo": "Adventure",
+        "tipo": "sedan 5 puertas",
+        "anio": "2010",
+        "kilometraje": "200000",
+        "precio_compra": "2000000",
+        "precio_venta": "3500000",
+        "estado": "vendido",
+        "delete": 1
+    },
+    {
+        "id_vehiculo": 18,
+        "dominio": "ABC123",
+        "marca": "Toyota",
+        "modelo": "Adventure",
+        "tipo": "sedan 5 puertas",
+        "anio": "2010",
+        "kilometraje": "200000",
+        "precio_compra": "12000",
+        "precio_venta": "3500000",
+        "estado": "vendido",
+        "delete": 1
     }
 ]

@@ -88,5 +88,65 @@
         "telefono": "03704321509",
         "email": "maugesara@gmail.com",
         "delete": 1
+    },
+    {
+        "id_cliente": 9,
+        "nombre": "FrancO",
+        "apellido": "Romero",
+        "dni": "34509432",
+        "direccion": "Los pumas",
+        "telefono": "3254",
+        "email": "franromero@gmail.com",
+        "delete": "0"
+    },
+    {
+        "id_cliente": 10,
+        "nombre": "Fran",
+        "apellido": "Saracho",
+        "dni": "344299998",
+        "direccion": "Formosa-Sa",
+        "telefono": "3704716682",
+        "email": "maugesara@gmail.com",
+        "delete": 1
+    },
+    {
+        "id_cliente": 11,
+        "nombre": "Eugenia",
+        "apellido": "Saracho",
+        "dni": "344299998",
+        "direccion": "Formosa-Sa",
+        "telefono": "3704716682",
+        "email": "maugesara@gmail.com",
+        "delete": 1
+    },
+    {
+        "id_cliente": 12,
+        "nombre": "Fran",
+        "apellido": "Saracho",
+        "dni": "344299998",
+        "direccion": "Formosa-Sa",
+        "telefono": "3254",
+        "email": "maugesara@gmail.com",
+        "delete": 1
+    },
+    {
+        "id_cliente": 13,
+        "nombre": "Eugenia",
+        "apellido": "Saracho",
+        "dni": "344299998",
+        "direccion": "Formosa-Sa",
+        "telefono": "3704716682",
+        "email": "maugesara@gmail.com",
+        "delete": "0"
+    },
+    {
+        "id_cliente": 14,
+        "nombre": "Eugenia",
+        "apellido": "Saracho",
+        "dni": "34599438",
+        "direccion": "Formosa-Sa",
+        "telefono": "3704716682",
+        "email": "maugesara@gmail.com",
+        "delete": "0"
     }
 ]

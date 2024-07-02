@@ -9,7 +9,7 @@ from model.form.model_transaccion_form import TransaccionFormModel
 from service.compra.sevice_transaccion_compra import agregar_transaccion_compra,busqueda_por_id_transaccion,mostrar_vehiculos_proveedores,busqueda_por_id_transaccion_vehiculo,mostrar_transaccion_compra
 from service.compra.service_cliente_proveedor import mostrar_clientes_proveedores, borrado_logico_cliente_proveedor, editar_dato_cliente_proveedor, busqueda_por_dni,busqueda_cliente_por_id
 from service.venta.service_transaccion_venta import agregar_transaccion_venta,busqueda_por_id_transaccion_venta
-from service.venta.service_cliente import mostrar_clientes_consumidores,borrado_logico_cliente_consumidor, editar_dato_cliente_consumidor
+from service.venta.service_cliente import mostrar_clientes_consumidores,borrado_logico_cliente_consumidor, editar_dato_cliente_consumidor,busqueda_por_dni_consumidor
 from service.service_vehiculo  import mostrar_inventario, borrado_logico, editar_dato, reservar_vehiculo_por_id
 
 from datetime import datetime
@@ -103,9 +103,9 @@ def vender_vehiculo(id_vehiculo):
     telefono = None
     email = None
     dni = request.form.get('dni')
-    response_cliente = busqueda_por_dni(dni)
+    response_cliente = busqueda_por_dni_consumidor(dni)
     id_cliente = ''
-    if(response_cliente != ''):
+    if(response_cliente != None):
         id_cliente = response_cliente['id_cliente']
     else:
         id_cliente = request.form.get('id_cliente')
@@ -129,6 +129,7 @@ def vender_vehiculo(id_vehiculo):
     
     if request.method == 'POST':
         response = agregar_transaccion_venta(json_resultado)
+        print(response)
         if int(response) == 200:
             inventario_venta = mostrar_inventario()            
             return render_template('lista_venta.html', inventario_venta=inventario_venta)

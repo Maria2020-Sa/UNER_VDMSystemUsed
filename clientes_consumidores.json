@@ -11,12 +11,22 @@
     },
     {
         "id_cliente": 1,
-        "nombre": "Francisco",
+        "nombre": "Francisco r",
         "apellido": "Romero",
         "dni": "34599434",
         "direccion": "B\u00b0 Colluccio Cs-15 S-B",
         "telefono": "3704321509",
         "email": "franciscorafaelromero@gmail.com",
+        "delete": 1
+    },
+    {
+        "id_cliente": 2,
+        "nombre": "Eugenia",
+        "apellido": "Saracho",
+        "dni": "11679608",
+        "direccion": "Formosa-Sa",
+        "telefono": "3704716682",
+        "email": "maugesara@gmail.com",
         "delete": "0"
     }
 ]

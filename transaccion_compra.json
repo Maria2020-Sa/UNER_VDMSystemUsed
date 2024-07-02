@@ -115,5 +115,59 @@
         "fecha": "2024-07-01T19:31:07",
         "monto": "1000000",
         "observaciones": "form.observaciones"
+    },
+    {
+        "id_transaccion": 13,
+        "id_vehiculo": 13,
+        "id_cliente": 9,
+        "tipo": "compra",
+        "fecha": "2024-07-01T20:49:36",
+        "monto": "12000",
+        "observaciones": "form.observaciones"
+    },
+    {
+        "id_transaccion": 14,
+        "id_vehiculo": 14,
+        "id_cliente": 10,
+        "tipo": "compra",
+        "fecha": "2024-07-01T21:14:26",
+        "monto": "2000000",
+        "observaciones": "form.observaciones"
+    },
+    {
+        "id_transaccion": 15,
+        "id_vehiculo": 15,
+        "id_cliente": 11,
+        "tipo": "compra",
+        "fecha": "2024-07-01T21:31:05",
+        "monto": "12000",
+        "observaciones": "form.observaciones"
+    },
+    {
+        "id_transaccion": 16,
+        "id_vehiculo": 16,
+        "id_cliente": 12,
+        "tipo": "compra",
+        "fecha": "2024-07-01T21:39:52",
+        "monto": "2000000",
+        "observaciones": "form.observaciones"
+    },
+    {
+        "id_transaccion": 17,
+        "id_vehiculo": 17,
+        "id_cliente": 13,
+        "tipo": "compra",
+        "fecha": "2024-07-01T22:07:09",
+        "monto": "2000000",
+        "observaciones": "form.observaciones"
+    },
+    {
+        "id_transaccion": 18,
+        "id_vehiculo": 18,
+        "id_cliente": 14,
+        "tipo": "compra",
+        "fecha": "2024-07-01T22:09:12",
+        "monto": "12000",
+        "observaciones": "form.observaciones"
     }
 ]

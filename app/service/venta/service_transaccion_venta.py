@@ -30,7 +30,7 @@ def mapear_datos_cliente(formulario_venta):
     telefono = formulario_venta['telefono']
     email = formulario_venta['email']
     delete = formulario_venta['delete']
-    return Cliente(nombre, apellido, dni, direccion, telefono, email, delete)
+    return Cliente('a',nombre, apellido, dni, direccion, telefono, email, delete)
 
 def mapear_datos_transaccion(id_transaccion, formulario_venta, id_cliente):
     id_transaccion_venta = id_transaccion
@@ -56,6 +56,7 @@ def agregar_transaccion_venta(formulario_venta_json):
             escribir_datos(transaccion_venta_bd)
             busqueda_por_id(transaccion_venta.id_vehiculo)
         else:
+            print("elseeeee")
             cliente = mapear_datos_cliente(formulario_venta)
             id_cliente = agregar_cliente(cliente)
             transaccion_venta = mapear_datos_transaccion(len(transaccion_venta_bd), formulario_venta, id_cliente)
@@ -64,6 +65,7 @@ def agregar_transaccion_venta(formulario_venta_json):
             busqueda_por_id(transaccion_venta.id_vehiculo)
         return 200
     except Exception as e:
+        print(e)
         return 500        
 
 def busqueda_por_id_transaccion_venta(id_cliente):
